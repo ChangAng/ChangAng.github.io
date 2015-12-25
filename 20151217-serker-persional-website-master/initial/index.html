@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  
+
+  <link rel="stylesheet" href="css/main.css">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- 引入Ｊquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- 引入Ｊs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
+  <!-- 引入CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <script src="js/AA.js"></script>
+  <script src="js/01.js"></script>
+  <script src="js/02.js"></script>
+  <script src="js/03.js"></script>
+  <script src="js/04.js"></script>
+  <script src="js/07.js"></script>
+  <script src="js/10.js"></script>
+  <script src="js/20.js"></script>
+  <script src="js/30.js"></script>
+  <script src="js/40.js"></script>
+  <script src="js/SING.js"></script>
+  <script src="js/SING1.js"></script>
+  <script src="js/jquery.aniview.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+    	$('.aniview').AniView();
+
+      var source_id = '1UHzirAM6XPPReZHYcpn0FaMPdGom3k0Y4zMQBTqrMRM';
+      $.ajax({
+          url: 'https://spreadsheets.google.com/feeds/list/' + source_id + '/1/public/values?alt=json',
+          async: false,
+          type: 'GET',
+        })
+        .done(function(data) {
+          console.log("success");
+          for (var i = 0 ; i < (data.feed.entry).length ; i++)
+          {
+            var text = data.feed.entry[i]['gsx$text']['$t'];
+            var img = data.feed.entry[i]['gsx$src']['$t'];
+            var photo_inner = $.parseHTML("<li><a class=\"ns-img\" href=\"" + img + "\"/></a><div class=\"caption\">"+ text +"</div></li>");
+            $('#inphoto').append(photo_inner);
+          }
+        })
+        .fail(function() {
+          console.log("Home photo error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+
+      function getFieldValue(myform, fieldName) {
+        var text = myform.form('get value', fieldName);
+        if (text != "") return text;
+        else return "none";
+      }
+
+      $("#contactBtn").click(function() {
+        var form = $(".ui.form");  
+        var formData = {
+            yourName: getFieldValue(form, 'yourname'),
+            yourEmail: getFieldValue(form, 'youremail'),
+            tellMeWhat: getFieldValue(form, 'tellmewhat')
+        };
+        $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycbz2Y8t9eYhBMyVBKzWx-nK8V3UXFN1jJthodDWtC2olDFpZl8Zp/exec',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            success: function(){console.log('yes')},
+            fail: function(){console.log('no')}
+        });
+      });     
+    });
+  </script>
+  
+  <script src="js/ninja/ninja-slider.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/ninja-slider.css">
+  <script src="js/ninja-slider.js"></script>
+  
+</head>
+<body>
+  <!-- 這裡放 menu bar (nav bar) -->
+  <h3 style="margin-top: 60px;"> </h3>
+<div class="ui fixed black inverted four item labeled icon menu" style="height: 60px;">
+      <a class="item">
+        <i class="heart icon"></i>
+        我要正妹
+      </a>
+      <a class="item">
+        <i class="video camera icon"></i>
+        妹子頻道
+      </a>
+      <a class="item">
+        <i class="comments icon"></i>
+        找人聊聊
+        </a>
+      <div class="ui search" style="margin: -5px;">
+  		<div class="ui icon input" style="padding:10px">
+   		<input class="prompt" type="text" placeholder="懇請神龍發威......" style="margin: 5px">
+    	<i class="search icon" style="width:209px"></i>
+    		<div id="07" class="ui animated inverted basic button" tabindex="0" style="width: 46px;padding: 8px;margin: 9px;">
+				  <div class="visible content">Login</div>
+				  <div class="hidden content">
+				    <i class="right arrow icon"></i>
+
+<div  id="007" class="ui modal">
+              <i class="close icon"></i>
+              <div class="header">
+                登入介面
+              </div>
+              
+<div>
+  <div class="ui two column middle aligned very relaxed stackable grid" style="margin:10px">
+  <div class="column">
+    <div class="ui form">
+      <div class="field">
+        <label>帳號名稱</label>
+        <div class="ui left icon input">
+          <input type="text" placeholder="請輸入帳號/E-mail/暱稱/名稱">
+          <i class="user icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <label>密碼</label>
+        <div class="ui left icon input">
+          <input type="password" placeholder="請輸入密碼">
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <div class="ui blue submit button">登入</div>
+    </div>
+  </div>
+  <div class="ui vertical divider">
+    Or
+  </div>
+  <div class="center aligned column">
+    <div id="08" class="ui big green labeled icon button">
+      <i class="signup icon"></i>
+      註冊帳號
+    </div>
+  </div>
+</div>
+</div>
+               <div class="actions">
+                
+						  </div>
+				</div>
+				
+                </div>
+                </div>
+
+				  </div>
+</div>
+  	</div>
+  		<div class="results">
+  	</div>
+</div>
+      </a>
+    </div>
+    </div>
+    </div>
+
+
+
+  <!-- 這裡放 照片slide -->
+  <div id="photoSlide" class="section" style="min-height:72vh;padding:0px;">
+    <div id="ninja-slider">
+        <div class="slider-inner">
+            <ul id="inphoto">
+                <!-- <li>
+                    <a class="ns-img" href="img/1.jpg"></a>
+                    <div class="caption">RESPONSIVE</div>
+                </li>
+                <li>
+                    <a class="ns-img" href="img/2.jpg"></a>
+                    <div class="caption">TOUCH·ENABLED</div>
+                </li>
+                <li>
+                    <a class="ns-img" href="img/3.jpg"></a>
+                    <div class="caption">VIDEO·AUDIO</div>
+                </li>
+                <li>
+                    <a class="ns-img" href="img/4.jpg"></a>
+                    <div class="caption">NON·JQUERY</div>
+                </li>
+                <li>
+                    <a class="ns-img" href="img/5.jpg"></a>
+                    <div class="caption">MOBILE·FRIENDLY</div>
+                </li> -->
+            </ul>
+            <div class="navsWrapper">
+                <div id="ninja-slider-prev"></div>
+                <div id="ninja-slider-next"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+<div class="ui two column grid" style="margin: 32px">
+  <div class="column">
+    <div class="ui raised segment">
+      <a class="ui red ribbon label">《越南拳擊正妹》15歲健美胴體讓人想單挑！</a>
+      <span></span>
+      <p><div class="item">
+    <div class="ui small image fade reveal image">
+      <img class="visible content" src="http://cdn.clickme.net/Gallery/2022/10/16/bddf737913452dad14f7d8c17cf5c599.jpg">
+      <img class="hidden content" src="http://s2.imgs.cc/img/WdMoGjI.jpg">
+    </div>
+    <div class="middle aligned content">
+      <div class="header">
+        
+      </div>
+      <div class="description" style="margin: 17px">
+        <p>如果你愛一個人，先要使自己現在或將來百分之百的值得他愛，至於他愛不愛你，那是他的事，你可以如此希望，但不必勉強去追求。</p>
+      </div>
+      <div class="extra">
+      <div class="extra content">
+        <div class="ui buttons">
+  			<button id="10" class="ui button">拒絕</button>
+
+<div id="100" class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    這個好機會，請不要輕易錯過!
+  </div>
+</div>
+  				<div class="or"></div>
+  			<button id="01" class="ui positive button">認識</button>
+  			<div  id="001" class="ui modal">
+              <i class="close icon"></i>
+              <div class="header">
+                《越南拳擊正妹》15歲健美胴體讓人想單挑！
+              </div>
+              <div class="image content">
+              <div class="ui fluid image">
+      	<div class="ui black ribbon label">
+        		<i class="protect icon"></i> 保護
+      		</div>
+      			<img src="http://tw.webimage.beanfun.com/beautyimages/c50aac3d-7d25-458a-8ed2-2a051b156b5d.jpg">
+    		</div>               
+                <div>
+                  <div class="ui card" style="margin:10px;padding:10p;width: 323px;height: 665px">
+  <div class="content">
+    <div class="header">Khả Ngân</div>
+    <p>你敢相信這麼甜美的女生會打拳擊嗎？</p>
+  </div>
+  <div class="content">
+    <h4 class="ui sub header">簡介/想說的話</h4>
+    <div class="ui small feed">
+      <p>一位笑容就擊倒對手的越南拳擊正妹照在網路上瘋傳，這位16歲的越南拳擊正妹「Khả Ngân」黎顏擁有天使般的笑容，同時也是位臥蠶正妹，她所拍攝的照片，招牌就是能夠迷倒眾生的微笑，有不少PTT鄉民看後紛紛表示戀愛惹，還有人不敢相信這真的是越南女生，更有鄉民大呼：融化了！本月最正就給她了......</p>
+    </div>
+  </div>
+  <div class="extra content">
+    <button class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</button>
+<button class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</button>
+<button class="ui circular linkedin icon button">
+  <i class="linkedin icon"></i>
+</button>
+<button class="ui circular google plus icon button">
+  <i class="google plus icon"></i>
+</button>
+  </div>
+</div>
+                </div>
+              </div>
+
+              <div class="actions">
+                <button class="ui inverted blue button"><i class="man icon"></i>我是男生，我想認識!</button>
+					<button class="ui inverted pink button"><i class="woman icon"></i>我是女生，我想認識!</button>
+                </div>
+                </div>
+                </div>       
+		</div>
+      </div>
+    </div>
+  </div></p>
+      <a class="ui blue ribbon label">《英雄聯盟》正妹玩家</a>
+      <p><div class="item">
+    <div class="ui small image fade reveal image">
+      <img class="visible content" src="http://g.udn.com.tw/upfiles/B_YA/yahoonews/PSN_PHOTO/053/f_9572053_1.jpg">
+      <img class="hidden content" src="http://g.udn.com.tw/upfiles/B_YA/yahoonews/PSN_PHOTO/057/f_9572057_1.jpg">
+    </div>
+    <div class="middle aligned content">
+      <div class="header">
+        
+      </div>
+      <div class="description" style="margin: 17px">
+        <p>胃病總是由於貪吃。疳積病是上帝派來教育胃的。並且你們應當記住這一點：我們的每一種欲念，甚至包括愛情在內，也都有胃口，不可太飽。</p>
+      </div>
+      <div class="extra">
+      <div class="extra content">
+        <div class="ui buttons">
+  			<button id="20" class="ui button">拒絕</button>
+  				<div class="or"></div>
+  			<button id="02" class="ui positive button">認識</button>
+  			<div  id="002" class="ui modal">
+              <i class="close icon"></i>
+              <div class="header">
+                《英雄聯盟》正妹玩家
+              </div>
+              <div class="image content">
+                <div class="ui fluid image">
+      	<div class="ui black ribbon label">
+        		<i class="desktop icon"></i> 電玩
+      		</div>
+      			<img src="http://g.udn.com.tw/upfiles/B_YA/yahoonews/PSN_PHOTO/064/f_9572064_1.jpg">
+    		</div>               
+                <div>
+                  <div class="ui card" style="margin:10px;padding:10p;width: 323px;height: 665px">
+  <div class="content">
+    <div class="header">珊迪 Ting-Shan Lin</div>
+    <P>正妹玩家YYTSLin好胸!</P>
+  </div>
+  <div class="content">
+    <h4 class="ui sub header">簡介/想說的話</h4>
+    <div class="ui small feed">
+      <P>和你一起打電動的夢幻超胸女友"珊迪"</P>
+      <P>愛打電玩超兇可愛正妹珊迪Ting-Shan Lin</P>
+      <P>珊迪Ting-Shan Lin基本資料:</P>
+      <P>暱稱: 珊迪 </P>
+      <P>性別: 女 </P>
+      <P>生日: 1月/12日 魔羯座 </P>
+      <P>血型: A </P>
+      <P>學歷: 新北市-私立竹林國小, 台中市-私立華盛頓高中附國中部, Davis Senior High School </P>
+      <P>職業: 學生 興趣: 逛街購物,聊天哈拉,電玩對戰,唱歌跳舞,吃喝玩樂</P>
+    </div>
+  </div>
+  <div class="extra content">
+    <button class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</button>
+<button class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</button>
+<button class="ui circular linkedin icon button">
+  <i class="linkedin icon"></i>
+</button>
+<button class="ui circular google plus icon button">
+  <i class="google plus icon"></i>
+</button>
+  </div>
+</div>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="ui inverted blue button"><i class="man icon"></i>我是男生，我想認識!</button>
+					<button class="ui inverted pink button"><i class="woman icon"></i>我是女生，我想認識!</button>
+                </div>
+                </div>
+                </div>
+		</div>
+      </div>
+    </div>
+  </div></p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui segment">
+      <a class="ui orange ribbon label">《一帶式皮衣》H杯正妹自創遮點？</a>
+      <p><div class="item">
+    <div class="ui small image fade reveal image">
+      <img class="visible content" src="http://g.udn.com.tw/upfiles/B_BA/bala75862/PSN_PHOTO/838/f_12338838_1.jpg">
+      <img class="hidden content" src="http://g.udn.com.tw/upfiles/B_BA/bala75862/PSN_PHOTO/839/f_12338839_1.jpg">
+    </div>
+    <div class="middle aligned content">
+      <div class="header">
+        
+      </div>
+      <div class="description" style="margin: 17px">
+        <p>我想我是一個不懂得在現實中表達感情的人。我把自己的感情都錯放在一個又一個的角色裏，談情說愛，七情六欲，都是電視劇和電影裏頭的感情世界，回到現實中，我只是一個渴望有細水長流、平淡恬靜的愛情的人。</p>
+      </div>
+      <div class="extra">
+      <div class="extra content">
+        <div class="ui buttons">
+  			<button id="30" class="ui button">拒絕</button>
+  				<div class="or"></div>
+  			<button id="03" class="ui positive button">認識</button>
+  			<div  id="003" class="ui modal">
+              <i class="close icon"></i>
+              <div class="header">
+                《一帶式皮衣》H杯正妹自創遮點？
+              </div>
+              <div class="image content">
+                <div class="ui fluid image">
+      	<div class="ui black ribbon label">
+        		<i class="lightning icon"></i> 大膽
+      		</div>
+      			<img src="http://g.udn.com.tw/upfiles/B_BA/bala75862/PSN_PHOTO/829/f_12338829_1.jpg">
+    		</div>               
+                <div>
+                  <div class="ui card" style="margin:10px;padding:10p;width: 323px;height: 665px">
+  <div class="content">
+    <div class="header">匿名波濤正妹</div>
+    <p>給人「癡人GO GO」的暈眩感~~</p>
+  </div>
+  <div class="content">
+    <h4 class="ui sub header">簡介/想說的話</h4>
+    <div class="ui small feed">
+      <p>有了朋友，生命才顯出它全部的價值；一個人活著是為了朋友；保持自己生命的完整，不受時間侵蝕，也是為了朋友。友誼要像愛情一樣才溫暖人心，愛情要像友誼一樣才牢不可破。</p>
+      <p>愛情的陶醉和戰慄，佔有的痙攣，探聽不到秘密激起的怒火，全都消逝得無影無蹤：只有愛情帶著憂傷甘美的滋味把他緊緊地摟住，一種已經幾乎沒有任何渴望、可是無比強烈的愛情。</p>
+    </div>
+  </div>
+  <div class="extra content">
+    <button class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</button>
+<button class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</button>
+<button class="ui circular linkedin icon button">
+  <i class="linkedin icon"></i>
+</button>
+<button class="ui circular google plus icon button">
+  <i class="google plus icon"></i>
+</button>
+  </div>
+</div>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="ui inverted blue button"><i class="man icon"></i>我是男生，我想認識!</button>
+					<button class="ui inverted pink button"><i class="woman icon"></i>我是女生，我想認識!</button>
+                </div>
+                </div>
+                </div>
+		</div>
+      </div>
+    </div>
+  </div></p>
+      <a class="ui teal ribbon label">《美照馬來西亞人》正妹美女～美照大集合!</a>
+      <p><div class="item">
+    <div class="ui small image fade reveal image">
+      <img class="visible content" src="http://ext.pimg.tw/vviipp0001/1397383905-3495444974_n.jpg">
+      <img class="hidden content" src="http://pic.pimg.tw/vviipp0001/1397383903-2216657736_n.jpg">
+    </div>
+    <div class="middle aligned content">
+      <div class="header">
+        
+      </div>
+      <div class="description" style="margin: 17px">
+        <p>我會有這樣的愛情……全世界在我眼中這時分為兩半：一半是她，那裏一切都是歡喜，希望，光明；另一半是沒有她的一切，那裏一切是苦悶和黑暗。 </p>
+      </div>
+      <div class="extra">
+      <div class="extra content">
+        <div class="ui buttons">
+  			<button id="40" class="ui button">拒絕</button>
+  				<div class="or"></div>
+  			<button id="04" class="ui positive button">認識</button>
+  			<div  id="004" class="ui modal">
+              <i class="close icon"></i>
+              <div class="header">
+                《美照馬來西亞人》正妹美女～美照大集合!
+              </div>
+              <div class="image content">
+                <div class="ui fluid image">
+      	<div class="ui black ribbon label">
+        		<i class="birthday icon"></i> 俏皮
+      		</div>
+      			<img src="http://pic.pimg.tw/vviipp0001/1397383908-4156678495_n.jpg">
+    		</div>               
+                <div>
+                  <div class="ui card" style="margin:10px;padding:10p;width: 323px;height: 665px">
+  <div class="content">
+    <div class="header">韓曉曖</div>
+    <p>"Do u love my funny face?"</p>
+  </div>
+  <div class="content">
+    <h4 class="ui sub header">簡介/想說的話</h4>
+    <div class="ui small feed">
+    <p>這少女的年齡，正是一個人用愉快而得意的夢境來麻醉自己的年齡，她時時刻刻想著愛情，那種濃厚的興趣與好奇心，要不是因為她愚味無知，簡直不能說是無邪的了。</p>
+      <p>並不是要達到了怎樣的目的，愛才成為愛。無論怎樣的愛都是一份美好，一份結果。而刻在心底的愛，因為無私無欲，因為淡泊憂傷，才會是真正的永恆。</p>
+    </div>
+  </div>
+  <div class="extra content">
+    <button class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</button>
+<button class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</button>
+<button class="ui circular linkedin icon button">
+  <i class="linkedin icon"></i>
+</button>
+<button class="ui circular google plus icon button">
+  <i class="google plus icon"></i>
+</button>
+  </div>
+</div>
+                </div>
+              </div>
+              <div class="actions">
+					<button class="ui inverted blue button"><i class="man icon"></i>我是男生，我想認識!</button>
+					<button class="ui inverted pink button"><i class="woman icon"></i>我是女生，我想認識!</button>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+		</div>
+      </div>
+    </div>
+  </div>
+</div></p>
+    </div>
+  </div>
+</div>
+<!-- 這裡放 timelinejs --> 
+
+<div id="timelinejs" class="section aniview slow" av-animation="lightSpeedIn" style="min-height: 77vh;padding: 0px;background-color: rgba(255,255,255,.9);">
+   	<iframe src='http://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1yk1rSfKHZ_FFDoK_zJHkDFz9M2S20ZEEUww6U19piPI&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' frameborder='0'></iframe>
+  </div>
+
+
+  <!-- 這裡放 自我介紹 -->
+<div class="ui stackable two column grid">
+  <div class="column">
+  	<div class="ui form" style="padding: 145px">
+      <div class="field">
+        <label>帳號名稱</label>
+        <div class="ui left icon input">
+          <input type="text" placeholder="請輸入帳號/E-mail/暱稱/名稱">
+          <i class="user icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <label>密碼</label>
+        <div class="ui left icon input">
+          <input type="password" placeholder="請輸入密碼">
+          <i class="lock icon"></i>
+        </div>
+        <div class="ui blue submit button" style="margin: 6px;">登入</div>
+        </div>
+  <div class="ui horizontal divider">
+    Or
+  </div>
+  <div id="06" class="ui big green labeled icon button">
+      <i class="signup icon"></i>
+      註冊帳號
+    </div>
+</div>
+</div>
+  	
+	<div  id="006" class="ui modal">
+              <i class="close icon"></i>
+              <div class="header">
+                註冊新帳號
+              </div>
+              
+<div class="image content">
+  <div class="ui form">
+  <div class="fields">
+	    <div class="field">
+	      <label>姓氏</label>
+	      <input type="text" placeholder="請問貴姓">
+	    </div>
+	    <div class="field">
+	      <label>名字</label>
+	      <input type="text" placeholder="請問大名">
+	    </div>
+    <div class="field">
+	<label>Gender</label>
+		    <select class="ui dropdown">
+					  <option value="">性別</option>
+					  <option value="1">我是男生</option>
+					  <option value="0">我是女生</option>
+			</select>
+    </div>
+    </div>
+    
+    <div class="field">
+    <label>住址</label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <input type="text" name="shipping[address]" placeholder="你住哪啊?">
+      </div>
+      <div class="four wide field">
+        <input type="text" name="shipping[address-2]" placeholder="郵遞區號">
+      </div>
+    </div>
+  </div>
+
+<div class="field">
+<div class="ui toggle checkbox">
+  <input type="checkbox" name="public">
+  <label>同意網站服務條款，並願意承擔所有風險。</label>
+</div>
+
+
+
+  </div>
+</div>
+</div>
+               <div class="actions">
+                <div class="ui submit button">提交</div>
+                <div class="ui animated fade button" tabindex="0">
+						  <div class="visible content">註冊Pro帳號</div>
+						  <div class="hidden content">
+						    $5000 NTD / 月
+						  </div>
+				</div>
+				
+                </div>
+                </div>
+                
+
+
+  <div class="column">
+  	<div class="ui threaded comments" style="margin: 45px;">
+  <h3 class="ui dividing header">興大正妹討論專區</h3>
+  <div class="comment">
+    <a class="avatar">
+      <img src="http://www.ettoday.net/events/prince/img/prince_139_1.jpg">
+    </a>
+    <div class="content">
+      <a class="author">邱澤</a>
+      <div class="metadata">
+        <span class="date">今天 5:42PM</span>
+      </div>
+      <div class="text">
+        超有藝術感!
+      </div>
+      <div class="actions">
+        <a class="reply">回覆</a>
+      </div>
+    </div>
+  </div>
+  <div class="comment">
+    <a class="avatar">
+      <img src="http://www.ettoday.net/events/prince/img/prince_239_1.jpg">
+    </a>
+    <div class="content">
+      <a class="author">林志穎</a>
+      <div class="metadata">
+        <span class="date">昨天 12:30AM</span>
+      </div>
+      <div class="text">
+        <p>這網站對我幫助很大。謝謝你們!</p>
+      </div>
+      <div class="actions">
+        <a class="reply">回覆</a>
+      </div>
+    </div>
+    <div class="comments">
+      <div class="comment">
+        <a class="avatar">
+          <img src="http://www.ettoday.net/events/prince/img/prince_35_1.jpg">
+        </a>
+        <div class="content">
+          <a class="author">炎亞綸</a>
+          <div class="metadata">
+            <span class="date">剛剛</span>
+          </div>
+          <div class="text">
+            林志穎 你說得太好惹! :)
+          </div>
+          <div class="actions">
+            <a class="reply">回覆</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="comment">
+    <a class="avatar">
+      <img src="http://img0.lady8844.com/h030/h98/img201307181123490.jpg">
+    </a>
+    <div class="content">
+      <a class="author">박유천</a>
+      <div class="metadata">
+        <span class="date">5 天前</span>
+      </div>
+      <div class="text">
+        야,이 굉장합니다. 정말 감사합니다
+      </div>
+      <div class="actions">
+        <a class="reply">回覆</a>
+      </div>
+    </div>
+  </div>
+  <form class="ui reply form">
+    <div class="field">
+      <textarea></textarea>
+    </div>
+    <div class="ui blue labeled submit icon button">
+      <i class="icon edit"></i> 我要留言
+    </div>
+  </form>
+</div>
+  </div>
+</div>
+
+
+
+
+  
+  <!-- 這裡放 聯絡我 -->
+<div id="selfIntroduction" class="section">
+    <div class="space"></div>
+
+    <div class="ui stackable three column grid container" style="margin: 65px;">
+      <!-- my photo card -->
+    <div id='myphoto' class="column">
+        <div class="ui centered card" style="margin-top: 35px;">
+          <div class="ui slide masked reveal image">
+            <img src="http://via.vovo2000.com/vimg/phpbb2/files/201209/v2k-316-1347902912663.jpg" class="visible content">
+            <img src="http://i.gbc.tw/gb_img/1/002/849/2849241.jpg" class="hidden content">
+          </div>
+          <div class="content">
+            <a class="header">阿 幹</a>
+            <div class="meta">
+              <span class="date">我是站長，歡迎分享!</span>
+            </div>
+          </div>
+          <div class="extra content">
+
+          <div id="showmybtn" class="ui vertical animated button" tabindex="0" style="width: 98%;">
+  <div class="hidden content">更多關於我</div>
+  <div class="visible content">
+    <i class="info circle icon"></i>
+  </div>
+</div>
+            
+              <!-- show modal -->
+            <div id="005" class="ui modal">
+              <i class="close icon"></i>
+              <div class="header">
+                更多關於我
+              </div>
+              <div class="image content">
+                <div class="ui medium image">
+                  <img src="http://farm8.staticflickr.com/7087/7220196334_02a21d10fe_o.jpg">
+                </div>
+                <div class="description">
+                  <div class="ui header">阿 幹</div>
+                  <p>你好，我是張簡宇琮，綽號"幹哥"。  </p>
+                  <p>很高興你來加入"興大神龍正妹"這個大家庭，若你想更認識我的話，可以加我的FB或在網頁的最下端發送訊息給我。</p>
+                  <p>本站提供許多正妹資訊給各位紳士。</p>
+                  <p>如果想支持/獲得更多資料，去申請Pro帳號吧，孩子!(ﾉ>ω<)ﾉ</p>
+                </div>
+              </div>
+              <div class="actions">
+                <a href="https://www.facebook.com/profile.php?id=100000249238274" target="_blank">
+                  <button class="ui facebook button">
+                    <i class="facebook icon"></i>
+                    Facebook
+                  </button>
+                </a>
+                <a href="" target="_blank">
+                  <button class="ui google plus button">
+                    <i class="google plus icon"></i>
+                    google+
+                  </button>
+                </a>
+                <a href="https://github.com/ChangAng" target="_blank">
+                  <button class="ui github button">
+                    <i class="github icon"></i>
+                    Github
+                  </button>
+                </a>
+                <a href="" target="_blank">
+                  <button class="ui instagram button">
+                    <i class="instagram icon"></i>
+                    Instagram
+                  </button>
+                </a>
+                <div class="ui positive right labeled icon button">
+                  我要支持
+                  <i class="thumbs outline up icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- show myskill-->
+      <div id='myskill' class="column">
+        <h1><i class="heartbeat icon"></i>能力分析</h1>
+        <div style="height:5px;"></div>
+        <div id="p_java" class="ui yellow active progress">
+          <div class="bar" style="width:95%">
+            <div class="progress">95%</div>
+          </div>
+          <div class="label">正妹雷達</div>
+        </div>
+        <div id="p_c" class="ui yellow active progress">
+          <div class="bar" style="width:75%">
+            <div class="progress">75%</div>
+          </div>
+          <div class="label">中二程度</div>
+        </div>
+        <div id="p_javascript" class="ui olive active progress">
+          <div class="bar" style="width:70%">
+            <div class="progress">70%</div>
+          </div>
+          <div class="label">機動性</div>
+        </div>
+        <div id="p_html" class="ui olive active progress">
+          <div class="bar" style="width:50%">
+            <div class="progress">50%</div>
+          </div>
+          <div class="label">操作Html</div>
+        </div>
+        <div id="p_jsp" class="ui olive active progress">
+          <div class="bar" style="width:70%">
+            <div class="progress">70%</div>
+          </div>
+          <div class="label">妹子吸引力</div>
+        </div>
+        <div id="p_markdown" class="ui olive active progress">
+          <div class="bar" style="width:90%">
+            <div class="progress">90%</div>
+          </div>
+          <div class="label">爆發力</div>
+        </div>
+        <div id="p_python" class="ui blue active progress">
+          <div class="bar" style="width:95%">
+            <div class="progress">95%</div>
+          </div>
+          <div class="label">藝術細胞</div>
+        </div>
+        <div id="p_php" class="ui blue active progress">
+          <div class="bar" style="width:85%">
+            <div class="progress">85%</div>
+          </div>
+          <div class="label">收集情報力</div>
+        </div>
+      </div>
+      <!-- show software-->
+      <div id='software' class="column">
+        <h1><i class="tasks icon"></i>抵抗能力</h1>
+        <div style="height:5px;"></div>
+        <div id="p_word" class="ui orange active progress">
+          <div class="bar" style="width:65%">
+            <div class="progress">65%</div>
+          </div>
+          <div class="label">期末考</div>
+        </div>
+        <div id="p_ppt" class="ui orange active progress">
+          <div class="bar" style="width:75%">
+            <div class="progress">75%</div>
+          </div>
+          <div class="label">壓力</div>
+        </div>
+        <div id="p_powerd" class="ui pink active progress">
+          <div class="bar" style="width:10%">
+            <div class="progress">10%</div>
+          </div>
+          <div class="label">正妹</div>
+        </div>
+        <div id="p_imovie" class="ui pink active progress">
+          <div class="bar" style="width:5%">
+            <div class="progress">5%</div>
+          </div>
+          <div class="label">老媽</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 這裡放 聯絡我 -->
+<h2 class="ui center aligned icon header" style="background-color: #FFF8DC;margin: 0;">
+  <i class="circular users icon"></i>
+  人才招募
+  <p>你是中興大學的學生嗎?</p>
+  <p>你缺乏生活的動力嗎?</p>
+  <p>你對於美有獨特的看法嗎?</p>
+  <p>別遲疑了，快加入我們!</p>
+  <p>↓↓在下方填寫資料報名↓↓</p>
+</h2>
+  <div id="contactMe" class="section">
+    <div class="space"></div>
+    <div class="ui one column centered grid container" style="margin: 100px;margin-top: -65px">
+      <form class="ui large form segment" style="width: 550px;">
+        <div class="field">
+          <label>給我你的名字</label>
+          <input name="yourname" type="text" placeholder="請輸入名字">
+        </div>
+        <div class="field">
+          <label>還有你的聯絡方式</label>
+          <input name="youremail" type="text" placeholder="請輸入E-mail/手機號碼/Line ID/Facebook">
+        </div>
+        <div class="field">
+          <label>以及為什麼想加入我們</label>
+          <textarea name="tellmewhat" type="text" placeholder="說，什麼都可以說!"></textarea>
+        </div>
+        <div id="contactBtn" class="ui olive submit button">提交</div>
+        <div class="ui error message"></div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- 這裡放 footer -->
+<div class="ui teal inverted vertical footer segment">
+      <div class="ui center aligned container">
+        <div class="ui stackable inverted divided grid">
+          <div class="three wide column">
+            <h4 class="ui inverted header">QR code</h4>
+            <div class="ui inverted link list">
+              
+            </div>
+          </div>
+          <div class="three wide column">
+            <h4 class="ui inverted header">My Country</h4>
+            <div class="ui inverted link list">
+              <i class="massive tw flag"></i>
+              <p>Taiwan</p>
+            </div>
+          </div>
+          <div class="three wide column">
+            <h4 class="ui inverted header">Occupation</h4>
+            <div class="ui inverted link list">
+              <p>University Student</p>
+              <a class="item" href="http://www.nchu.edu.tw/index1.php" target="_blnak">My school</a>
+              <a class="item" href="http://nchuit.cc/" target="_blnak">My group</a>
+            </div>
+          </div>
+          <div class="seven wide column">
+            <h4 class="ui inverted header">Thanks for your watching</h4>
+            <p>If you have any question,you can use contact me segment send message to me.In addition,you can be my friend through Facebook.</p>
+          </div>
+        </div>
+        <div class="ui inverted divider"></div>
+        <div class="ui horizontal inverted small divided link list">
+          <a class="item" href="http://semantic-ui.com/examples/sticky.html#">Designed by YU-TSUNG CHANG-CHIEN</a>
+          <a class="item" href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    
+</body>
+</html>    

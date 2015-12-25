@@ -1,0 +1,162 @@
+
+<!-- 基本版型 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  
+
+  <link rel="stylesheet" href="css/main.css">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- 引入Ｊquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- 引入Ｊs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
+  <!-- 引入CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+    
+</head>
+<body>
+  <!-- 這裡放 menu bar (nav bar) -->
+
+  <!-- 這裡放 照片slide -->
+  <div id="photoSlide" class="section">
+    
+  </div>
+
+  <!-- 這裡放 自我介紹 -->
+  <div id="selfIntroduction" class="section">
+    
+  </div>
+    <!-- 這裡放 timelinejs -->
+  <div id="timelinejs" class="section">
+    
+  </div>
+  <!-- 這裡放 聯絡我 -->
+  <div id="contactMe" class="section">
+    
+  </div>
+  <!-- 這裡放 footer -->
+
+    
+</body>
+</html>    
+
+
+<!-- Ajax get -->
+<script>
+  var source_id = '';
+  $.ajax({
+      url: 'https://spreadsheets.google.com/feeds/list/' + source_id + '/1/public/values?alt=json',
+      async: false,
+      type: 'GET',
+    })
+    .done(function(data) {
+      console.log("success");
+      for (var i = 0 ; i < (data.feed.entry).length ; i++)
+      {
+        var text = data.feed.entry[i]['gsx$text']['$t'];
+        var img = data.feed.entry[i]['gsx$src']['$t'];
+        var photo_inner = $.parseHTML("<li><a class=\"ns-img\" href=\"" + img + "\"/></a><div class=\"caption\">"+ text +"</div></li>");
+        $('#inphoto').append(photo_inner);
+      }
+    })
+    .fail(function() {
+      console.log("Home photo error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+</script>
+
+
+<!-- Ajax post -->
+<script>
+  function getFieldValue(myform, fieldName) {
+    var text = myform.form('get value', fieldName);
+    if (text != "") return text;
+    else return "none";
+  }
+
+  $("#contactBtn").click(function() {
+    var form = $(".ui.form");  
+    var formData = {
+        yourName: getFieldValue(form, 'yourname'),
+        yourEmail: getFieldValue(form, 'youremail'),
+        tellMeWhat: getFieldValue(form, 'tellmewhat')
+    };
+    $.ajax({
+        url: '',
+        type: 'POST',
+        dataType: 'json',
+        data: formData,
+        success: function(){console.log('yes')},
+        fail: function(){console.log('no')}
+    });
+  });  
+</script>
+
+
+<!-- 動態滑動效果 -->
+<script>
+  $("#mbtn1").click(function(){
+      $('html,body').animate({scrollTop:$('#photoSlide').offset().top},600);
+    
+  });
+</script>
+
+
+<!-- 顯示modal表格 -->
+<script>
+  $("#showmybtn").click(function(){
+    $('.ui.modal')
+      .modal('show');
+  });
+</script>
+
+<!-- contact me 表格控制 -->
+<script>
+  $('.ui.form.segment')
+    .form({
+      on: 'blur',
+      fields: {
+        empty: {
+          identifier  : 'yourname',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter your name'
+            }
+          ]
+        },
+        email: {
+          identifier  : 'youremail',
+          rules: [
+            {
+              type   : 'email',
+              prompt : 'Please enter a valid e-mail'
+            }
+          ]
+        },
+        tellempty: {
+          identifier  : 'tellmewhat',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter value in You want to tell me what'
+            }
+          ]
+        }
+      }
+    });
+</script>
+
+
+
+

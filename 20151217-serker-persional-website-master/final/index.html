@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/ninja/ninja-slider.css">
+
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- 引入Ｊquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- 引入Ｊs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
+  <!-- 引入CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+  <script src="js/control.js"></script>
+    
+  <script>
+    $(document).ready(function() {
+      var source_id = '1ovAu6m7ARmQm7gltrc8Ov1IM-zYi1eIApxP7eo7XeLM';
+      $.ajax({
+          url: 'https://spreadsheets.google.com/feeds/list/' + source_id + '/2/public/values?alt=json',
+          async: false,
+          type: 'GET',
+        })
+        .done(function(data) {
+          console.log("success");
+          for (var i = 0 ; i < (data.feed.entry).length ; i++)
+          {
+            var text = data.feed.entry[i]['gsx$text']['$t'];
+            var img = data.feed.entry[i]['gsx$src']['$t'];
+            var photo_inner = $.parseHTML("<li><a class=\"ns-img\" href=\"" + img + "\"/></a><div class=\"caption\">"+ text +"</div></li>");
+            $('#inphoto').append(photo_inner);
+          }
+        })
+        .fail(function() {
+          console.log("Home photo error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+
+      function getFieldValue(myform, fieldName) {
+        var text = myform.form('get value', fieldName);
+        if (text != "") return text;
+        else return "none";
+      }
+
+      $("#contactBtn").click(function() {
+        var form = $(".ui.form");  
+        var formData = {
+            yourName: getFieldValue(form, 'yourname'),
+            yourEmail: getFieldValue(form, 'youremail'),
+            tellMeWhat: getFieldValue(form, 'tellmewhat')
+        };
+        $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycbxoIf19ii0eL6CVzYSsvmo_qglkH1wXe3_rfgstAESvj9GB7fu_/exec',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            success: function(){console.log('yes')},
+            fail: function(){console.log('no')}
+        });
+      });     
+    });
+  </script>
+  <script src="js/ninja/ninja-slider.js"></script>
+
+</head>
+<body>
+  <!-- 這裡放 menu bar (nav bar) -->
+  <div class="ui fixed grey inverted four item labeled icon menu">
+    <a id="mbtn1" class="item">
+      <i class="gamepad icon"></i>
+      Home
+    </a>
+    <a id="mbtn2" class="item" href="#selfIntroduction">
+      <i class="video camera icon"></i>
+      About me
+    </a>
+    <a id="mbtn3" class="item">
+      <i class="heartbeat icon"></i>
+      Sotory
+    </a>
+    <a id="mbtn4" class="item">
+      <i class="video play icon"></i>
+      Contact me
+    </a>
+  </div>
+
+  <div class="space"></div>
+  <!-- 這裡放 照片slide -->
+  <div id="photoSlide">
+    <div id="ninja-slider">
+      <div class="slider-inner">
+        <ul id="inphoto">
+        </ul>
+        <div class="navsWrapper">
+            <div id="ninja-slider-prev"></div>
+            <div id="ninja-slider-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 這裡放 自我介紹 -->
+  <div id="selfIntroduction" class="section">
+    <div class="space"></div>
+
+    <div class="ui stackable three column grid container">
+      <!-- my photo card -->
+      <div id='myphoto' class="column">
+        <div class="ui centered card">
+          <div class="ui slide masked reveal image">
+            <img src="img/p1.jpg" class="visible content">
+            <img src="img/p2.jpg" class="hidden content">
+          </div>
+          <div class="content">
+            <a class="header">Bacon Yao</a>
+            <div class="meta">
+              <span class="date">A handsome guy!</span>
+            </div>
+          </div>
+          <div class="extra content">
+            <button id="showmybtn" class="ui grey basic button">
+              Show my detail
+            </button>
+              <!-- show modal -->
+            <div class="ui modal">
+              <i class="close icon"></i>
+              <div class="header">
+                My Picture
+              </div>
+              <div class="image content">
+                <div class="ui medium image">
+                  <img src="img/icon.jpg">
+                </div>
+                <div class="description">
+                  <div class="ui header">嗨，我是張培堯  :D</div>
+                  <p>很高興你來觀賞我的網站，若你想更認識我的話，可以加我的FB或在網頁的最下端發送訊息給我。</p>
+                  <p>若你只是隨便瀏覽的話，非常的歡迎。</p>
+                </div>
+              </div>
+              <div class="actions">
+                <a href="https://www.facebook.com/bacon735392" target="_blank">
+                  <button class="ui facebook button">
+                    <i class="facebook icon"></i>
+                    Facebook
+                  </button>
+                </a>
+                <a href="https://plus.google.com/103003372248466066456" target="_blank">
+                  <button class="ui google plus button">
+                    <i class="google plus icon"></i>
+                    Facebook
+                  </button>
+                </a>
+                <a href="https://github.com/baconYao" target="_blank">
+                  <button class="ui github button">
+                    <i class="github icon"></i>
+                    Github
+                  </button>
+                </a>
+                <a href="https://www.instagram.com/bacon735392/" target="_blank">
+                  <button class="ui instagram button">
+                    <i class="instagram icon"></i>
+                    Instagram
+                  </button>
+                </a>
+                <div class="ui positive right labeled icon button">
+                  Yep, that's me
+                  <i class="thumbs outline up icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- show myskill-->
+      <div id='myskill' class="column">
+        <i class="big configure icon">Language</i>
+        <div style="height:5px;"></div>
+        <div id="p_java" class="ui yellow active progress">
+          <div class="bar" style="width:80%">
+            <div class="progress">80%</div>
+          </div>
+          <div class="label">Java</div>
+        </div>
+        <div id="p_c" class="ui yellow active progress">
+          <div class="bar" style="width:80%">
+            <div class="progress">80%</div>
+          </div>
+          <div class="label">C\C++</div>
+        </div>
+        <div id="p_javascript" class="ui olive active progress">
+          <div class="bar" style="width:70%">
+            <div class="progress">70%</div>
+          </div>
+          <div class="label">Javascript</div>
+        </div>
+        <div id="p_html" class="ui olive active progress">
+          <div class="bar" style="width:70%">
+            <div class="progress">70%</div>
+          </div>
+          <div class="label">Html</div>
+        </div>
+        <div id="p_jsp" class="ui olive active progress">
+          <div class="bar" style="width:70%">
+            <div class="progress">70%</div>
+          </div>
+          <div class="label">JSP</div>
+        </div>
+        <div id="p_markdown" class="ui olive active progress">
+          <div class="bar" style="width:70%">
+            <div class="progress">70%</div>
+          </div>
+          <div class="label">Markdown</div>
+        </div>
+        <div id="p_python" class="ui blue active progress">
+          <div class="bar" style="width:60%">
+            <div class="progress">60%</div>
+          </div>
+          <div class="label">Python</div>
+        </div>
+        <div id="p_php" class="ui blue active progress">
+          <div class="bar" style="width:60%">
+            <div class="progress">60%</div>
+          </div>
+          <div class="label">PHP</div>
+        </div>
+      </div>
+      <!-- show software-->
+      <div id='software' class="column">
+        <i class="big file icon">Software</i>
+        <div style="height:5px;"></div>
+        <div id="p_word" class="ui orange active progress">
+          <div class="bar" style="width:70%">
+            <div class="progress">70%</div>
+          </div>
+          <div class="label">Word</div>
+        </div>
+        <div id="p_ppt" class="ui orange active progress">
+          <div class="bar" style="width:70%">
+            <div class="progress">70%</div>
+          </div>
+          <div class="label">Power Point</div>
+        </div>
+        <div id="p_powerd" class="ui pink active progress">
+          <div class="bar" style="width:60%">
+            <div class="progress">60%</div>
+          </div>
+          <div class="label">Power Director</div>
+        </div>
+        <div id="p_imovie" class="ui pink active progress">
+          <div class="bar" style="width:60%">
+            <div class="progress">60%</div>
+          </div>
+          <div class="label">Imovie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- 這裡放 timelinejs -->
+  <div id="timelinejs" class="section">
+    
+  </div>
+
+  <!-- 這裡放 聯絡我 -->
+  <div id="contactMe" class="section">
+    <div class="space"></div>
+    <div class="ui one column centered grid container">
+      <form class="ui large form segment">
+        <div class="field">
+          <label>Your name</label>
+          <input name="yourname" type="text">
+        </div>
+        <div class="field">
+          <label>Your email</label>
+          <input name="youremail" type="text">
+        </div>
+        <div class="field">
+          <label>You want to tell me what</label>
+          <textarea name="tellmewhat" type="text"></textarea>
+        </div>
+        <div id="contactBtn" class="ui olive submit button">Submit</div>
+        <div class="ui error message"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 這裡放 footer -->
+  <div class="ui green inverted vertical footer segment">
+    <div class="ui center aligned container">
+      <div class="ui stackable inverted divided grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">QR code</h4>
+          <div class="ui inverted link list">
+            
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">My Country</h4>
+          <div class="ui inverted link list">
+            <i class="massive tw flag"></i>
+            <p>Taiwan</p>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Occupation</h4>
+          <div class="ui inverted link list">
+            <p>University Student</p>
+            <a class="item" href="http://www.nchu.edu.tw/index1.php" target="_blnak">My school</a>
+            <a class="item" href="http://nchuit.cc/" target="_blnak">My group</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Thanks for your watching</h4>
+          <p>If you have any question,you can use contact me segment send message to me.In addition,you can be my friend through Facebook.</p>
+        </div>
+      </div>
+      <div class="ui inverted divider"></div>
+      <div class="ui horizontal inverted small divided link list">
+        <a class="item" href="http://semantic-ui.com/examples/sticky.html#">Designed by PeiYao Chang</a>
+        <a class="item" href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+    
+</body>
+</html>    

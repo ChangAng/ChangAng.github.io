@@ -27,6 +27,7 @@
   <script src="js/20.js"></script>
   <script src="js/30.js"></script>
   <script src="js/40.js"></script>
+  <script src="js/bar.js"></script>
   <script src="js/SING.js"></script>
   <script src="js/SING1.js"></script>
   <script src="js/jquery.aniview.min.js"></script>
@@ -93,16 +94,16 @@
   <!-- 這裡放 menu bar (nav bar) -->
   <h3 style="margin-top: 60px;"> </h3>
 <div class="ui fixed black inverted four item labeled icon menu" style="height: 60px;">
-      <a class="item">
-        <i class="heart icon"></i>
-        我要正妹
+      <a id="010" class="item">
+        <i id="011" class="sidebar icon"></i>
+        更多功能
       </a>
-      <a class="item">
-        <i class="video camera icon"></i>
+      <a id="020" class="item">
+        <i id="021" class="video camera icon"></i>
         妹子頻道
       </a>
-      <a class="item">
-        <i class="comments icon"></i>
+      <a id="030" class="item">
+        <i id="031" class="comments icon"></i>
         找人聊聊
         </a>
       <div class="ui search" style="margin: -5px;">
@@ -206,7 +207,7 @@
         </div>
     </div>
   </div>
-<div class="ui two column grid" style="margin: 100px">
+<div id="channle" class="ui two column grid" style="margin: 100px;padding-top:50px">
   <div class="column">
     <div class="ui raised segment aniview reallyslow" av-animation="rotateInDownLeft">
       <a class="ui red ribbon label">《越南拳擊正妹》15歲健美胴體讓人想單挑！</a>
@@ -519,6 +520,22 @@
     </div>
   </div>
 </div>
+
+<div class="ui left demo vertical inverted sidebar labeled icon menu">
+  <a id="home" class="item">
+    <i id="041" class="home icon"></i>
+    回到首頁
+  </a>
+  <a id="block" class="item">
+    <i id="051" class="smile icon"></i>
+    關於站長
+  </a>
+  <a id="smile" class="item">
+    <i id="061" class="add user icon"></i>
+    加入我們
+  </a>
+</div>
+
 <!-- 這裡放 timelinejs --> 
 
 <div id="timelinejs" class="section aniview slow" av-animation="lightSpeedIn" style="min-height: 77vh;padding: 0px;background-color: rgba(255,255,255,.9);margin-top:100px;margin-bottom:100px">
@@ -527,7 +544,7 @@
 
 
   <!-- 這裡放 自我介紹 -->
-<div class="ui stackable two column grid" style="margin-bottom:80px">
+<div id="com" class="ui stackable two column grid" style="margin-bottom:80px;padding:20px">
   <div class="column">
   	<div class="ui form aniview slow" av-animation="flip" style="padding: 145px">
       <div class="field">
@@ -872,7 +889,7 @@
     </div>
   </div>
 <!-- 這裡放 聯絡我 -->
-<h2 class="ui center aligned icon header aniview reallyslow" av-animation="fadeIn" style="background-color: #FFF8DC;margin: 0;padding-top: 68px">
+<h2 id="people" class="ui center aligned icon header aniview reallyslow" av-animation="fadeIn" style="background-color: #FFF8DC;margin: 0;padding-top: 68px">
   <i class="circular users icon"></i>
   人才招募
   <p>你是中興大學的學生嗎?</p>
@@ -891,7 +908,7 @@
         </div>
         <div class="field">
           <label>還有你的聯絡方式</label>
-          <input name="youremail" type="text" placeholder="請輸入E-mail/手機號碼/Line ID/Facebook">
+          <input name="youremail" type="text" placeholder="請輸入E-mail">
         </div>
         <div class="field">
           <label>以及為什麼想加入我們</label>
